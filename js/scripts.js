@@ -24,27 +24,29 @@ $(document).ready(function() {
   };
   //currently this is getting a single number
   //maybe an array later
-  function getPing(number) {
+  function getPingPong(number,string,divisor) {
     var numberString = [];
-    if ( isDivisible(number,3) ) {
+    if ( isDivisible(number,divisor) ) {
       numberString = number.toString();
-      var newString = numberString.replace(/\d+/,"ping");
-      alert(newString);
+      var newString = numberString.replace(/\d+/,string);
+      alert(numberString + " being replaced with " + newString);
       return newString;
     } else {
-      alert("not divisble by 3");
+      alert("not divisble by : " + divisor);
     }
   };
 
-  function getPingPong(inputNum) {
-    getPing(inputNum);
+  function goPlay(inputNum) {
+    //var gameNumbers = getGameNumbers(inputNum);
+    getPingPong(inputNum,"ping",3);
+    getPingPong(inputNum,"pong",5);
     return isDivisible(inputNum,3);
     // return getGameNumbers(inputNum);
   };
 
   //---------FrontEnd--------------
   var inputNumber = parseInt($("#input").val());
-  var results = getPingPong(inputNumber);
+  var results = goPlay(inputNumber);
   $("#result ul").append("<li>" + results + "</li>");
   // results.forEach(function(result) {
   //   $("#result ul").append("<li>" + result + "</li>");
