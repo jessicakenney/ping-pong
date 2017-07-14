@@ -24,7 +24,6 @@ $(document).ready(function() {
   };
 
   function getPingPong(numbers) {
-
     var pingResults = numbers.map(function(number) {
       var numberString = number.toString();
       var newString = numberString;
@@ -50,14 +49,17 @@ $(document).ready(function() {
 
   //---------FrontEnd--------------
 
-  //hide ouput initially
   var inputNumber = parseInt($("#input").val());
   var results = goPlay(inputNumber);
 
   $(".results").show();
-  $("li").remove();
+  $(".results li").remove();
   results.forEach(function(result) {
-   $(".results ul").append("<li>" + result + "</li>");
+    if (/^p/.test(result) ){
+      $(".results ul").append("<li class='ping'>" + result + "</li>");
+    } else {
+      $(".results ul").append("<li>" + result + "</li>");
+    }
   });
 
   });

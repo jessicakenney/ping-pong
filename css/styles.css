@@ -1,3 +1,29 @@
-.results {
+.container{
+    margin-left: 100px;
+    padding: 50px;
+}
+.jumbotron{
+  background-image: url(./table.png);
+}
+.jumbotron h1{
+  text-align: center;
+}
+.results{
   display: none;
-};
+}
+.intro ul{
+  list-style-type: none;
+}
+.sidebar {
+  float: left;
+  font-size: 12px;
+  height: 1500px;
+  padding: 12px;
+  background-color: #F8F6ED;
+  width: 150px;
+  text: black;
+}
+.ping{
+  color: darkred;
+  text-decoration: underline;
+}
