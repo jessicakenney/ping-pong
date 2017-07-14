@@ -55,14 +55,26 @@ $(document).ready(function() {
   // get optional values
   var optionalDivisors = [];
   $("form input:text").each(function(){
-    //var value = $(this).val();
     optionalDivisors.push($(this).val());
   });
-  alert(optionalDivisors);
+  var optionalMode = 0;
+  var optDivisor1 = optionalDivisors[0];
+  var optDivisor2 = optionalDivisors[1];
+  alert (optDivisor1 + optDivisor2);
+  if ( /^\d$/.test(optDivisor1) && /^\d$/.test(optDivisor2) ){
+    mode = "optionalDivisors";
+    alert("Optional Divisors ON");
+  } else {
+    mode = "default";
+  };
 
   var results = goPlay(inputNumber);
 
+
+  // display results
   $(".results").show();
+  $(".results #mode").text(mode);
+
   $(".results li").remove();
   results.forEach(function(result) {
     if (/^p/.test(result) ){
