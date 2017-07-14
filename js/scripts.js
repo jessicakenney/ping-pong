@@ -24,33 +24,42 @@ $(document).ready(function() {
   };
   //currently this is getting a single number
   //maybe an array later
-  function getPingPong(number,string,divisor) {
-    var numberString = [];
-    if ( isDivisible(number,divisor) ) {
-      numberString = number.toString();
-      var newString = numberString.replace(/\d+/,string);
-      alert(numberString + " being replaced with " + newString);
+  function getPingPong(numbers,string,divisor) {
+
+    var pingResults = numbers.map(function(number) {
+
+      var numberString = number.toString();
+      var newString = numberString;
+      if ( isDivisible(number,divisor) ) {
+        newString = numberString.replace(/\d+/,string);
+        alert(numberString + " being replaced with " + newString);
+        //return newString;
+      } else {
+        //do nothing
+        //alert("not divisble by : " + divisor);
+      }
+      //map return
       return newString;
-    } else {
-      alert("not divisble by : " + divisor);
-    }
+    });
+    return pingResults;
   };
 
   function goPlay(inputNum) {
-    //var gameNumbers = getGameNumbers(inputNum);
-    getPingPong(inputNum,"ping",3);
-    getPingPong(inputNum,"pong",5);
-    return isDivisible(inputNum,3);
+    var gameNumbers = getGameNumbers(inputNum);
+    alert(gameNumbers);
+    var pings = getPingPong(gameNumbers,"ping",3);
+    //getPingPong(gameNumbers,"pong",5);
+    return pings;
     // return getGameNumbers(inputNum);
   };
 
   //---------FrontEnd--------------
   var inputNumber = parseInt($("#input").val());
   var results = goPlay(inputNumber);
-  $("#result ul").append("<li>" + results + "</li>");
-  // results.forEach(function(result) {
-  //   $("#result ul").append("<li>" + result + "</li>");
-  // });
+  //$("#result ul").append("<li>" + results + "</li>");
+  results.forEach(function(result) {
+   $("#result ul").append("<li>" + result + "</li>");
+  });
 
   });
 });
