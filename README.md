@@ -1,6 +1,6 @@
 # _Ping-Pong Game_
 
-#### _Intro to Programming Exercise for Epicodus, 07.14.2017 _
+### _Intro to Programming Exercise for Epicodus, 07.14.2017_
 
 #### By _**Jessica Sheridan **_
 

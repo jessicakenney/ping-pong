@@ -12,16 +12,26 @@ $(document).ready(function() {
     return gameNumbers;
   };
 
+  function isDivisible(number,testNum) {
+    if ((number % testNum) === 0 ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+
   function getPingPong(inputNum) {
-    return getGameNumbers(inputNum);
+    return isDivisible(inputNum,3);
+    // return getGameNumbers(inputNum);
   };
 
   //---------FrontEnd--------------
   var inputNumber = parseInt($("#input").val());
   var results = getPingPong(inputNumber);
-  results.forEach(function(result) {
-    $("#result ul").append("<li>" + result + "</li>");
-  });
+  $("#result ul").append("<li>" + results + "</li>");
+  // results.forEach(function(result) {
+  //   $("#result ul").append("<li>" + result + "</li>");
+  // });
 
   });
 });
