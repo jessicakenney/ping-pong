@@ -23,17 +23,18 @@ $(document).ready(function() {
     }
   };
 
-  function getPingPong(numbers) {
+  function getPingPong(numbers,div1,div2) {
     var pingResults = numbers.map(function(number) {
       var numberString = number.toString();
       var newString = numberString;
-      if ( isDivisible(number,3) ) {
-        if ( isDivisible(number,5) ) {
+
+      if ( isDivisible(number,div1) ) {
+        if ( isDivisible(number,div2) ) {
           newString = numberString.replace(/\d+/,"pingPong");
         } else {
           newString = numberString.replace(/\d+/,"ping");
         }
-      } else if ( isDivisible(number,5) ) {
+      } else if ( isDivisible(number,div2) ) {
         newString = numberString.replace(/\d+/,"pong");
       };
       return newString;
@@ -41,9 +42,13 @@ $(document).ready(function() {
     return pingResults;
   };
 
-  function goPlay(inputNum) {
+  function goPlay(inputNum,defaultMode,optDiv1,optDiv2) {
     var gameNumbers = getGameNumbers(inputNum);
-    var pingPongs = getPingPong(gameNumbers);
+    if (defaultMode) {
+      var pingPongs = getPingPong(gameNumbers,3,5);
+    } else {
+      var pingPongs = getPingPong(gameNumbers,optDiv1,optDiv2);
+    };
     return pingPongs;
   };
 
@@ -54,28 +59,30 @@ $(document).ready(function() {
 
   // get optional values
   var optionalDivisors = [];
+  var defaultMode = 1;
   $("form input:text").each(function(){
     optionalDivisors.push($(this).val());
   });
-  var optionalMode = 0;
-  var optDivisor1 = optionalDivisors[0];
-  var optDivisor2 = optionalDivisors[1];
-  alert (optDivisor1 + optDivisor2);
-  if ( /^\d$/.test(optDivisor1) && /^\d$/.test(optDivisor2) ){
-    mode = "optionalDivisors";
-    alert("Optional Divisors ON");
+
+  optionalDivisors.sort();
+  if ( /^\d$/.test(optionalDivisors[0]) && /^\d$/.test(optionalDivisors[1]) ){
+    modeString = "optionalDivisors";
+    defaultMode = 0;
   } else {
-    mode = "default";
+    modeString = "default";
   };
 
-  var results = goPlay(inputNumber);
+  var results = goPlay(inputNumber,defaultMode,optionalDivisors[0],optionalDivisors[1]);
 
 
   // display results
   $(".results").show();
-  $(".results #mode").text(mode);
+  $(".results #mode").text(modeString);
+  $(".results h5").after("<p>"+optionalDivisors[0]+"=ping</p>");
+  $(".results h5").after("<p>"+optionalDivisors[1]+"=pong</p>");
 
   $(".results li").remove();
+  $(".results p").remove();
   results.forEach(function(result) {
     if (/^p/.test(result) ){
       $(".results ul").append("<li class='ping'>" + result + "</li>");
