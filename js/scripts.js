@@ -49,7 +49,17 @@ $(document).ready(function() {
 
   //---------FrontEnd--------------
 
-  var inputNumber = parseInt($("#input").val());
+  //number input
+  var inputNumber = parseInt($("#maxNum").val());
+
+  // get optional values
+  var optionalDivisors = [];
+  $("form input:text").each(function(){
+    //var value = $(this).val();
+    optionalDivisors.push($(this).val());
+  });
+  alert(optionalDivisors);
+
   var results = goPlay(inputNumber);
 
   $(".results").show();
