@@ -49,11 +49,15 @@ $(document).ready(function() {
   };
 
   //---------FrontEnd--------------
-  
+
+  //hide ouput initially
   var inputNumber = parseInt($("#input").val());
   var results = goPlay(inputNumber);
+
+  $(".results").show();
+  $("li").remove();
   results.forEach(function(result) {
-   $("#result ul").append("<li>" + result + "</li>");
+   $(".results ul").append("<li>" + result + "</li>");
   });
 
   });
