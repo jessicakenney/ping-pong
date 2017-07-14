@@ -1,12 +1,47 @@
-# _{Application Name}_
+# _Ping-Pong Game_
 
-#### _{Brief description of application}, {Date of current version}_
+#### _Intro to Programming Exercise for Epicodus, 07.14.2017 _
 
-#### By _**{List of contributors}**_
+#### By _**Jessica Sheridan **_
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+_ This web game take a number input from a user and returns a range of number from 1 to the input number.  In return:
+    * Numbers divisible by 3 are replaced with "ping"
+    * Numbers divisible by 5 are replaced with "pong"
+    * Numbers divisible by 5 are replaced with "ping-pong"
+
+A user should be able to enter a new number and see new results
+over and over again.  _
+
+## Specificiations
+* 1.Count up to the input number.
+* __input:__ 2
+* __output:__ [1,2]
+*
+* 2.Determine if an input number is divisible by 3  
+* __input: 3__
+* __output: true__
+*
+* 3. Replace number divisible by 3 with "ping"
+* __input: 3__
+* __output: "ping"__
+*
+* 4. Replace number divisible by 5 with "pong"
+* __input: 5__
+* __output: "pong"__
+*
+* 5. Replace divisible by 3 range of numbers with "ping"
+* __input: 12__
+* __output:[1,2,ping,4,5,ping,7,8,ping,10,11,ping]__
+*
+* 6. Replace range of numbers with "ping" and "pong"
+* __input: 12__
+* __output:[1,2,ping,4,pong,ping,7,8,ping,pong,11,ping]__
+*
+* 7. Replace range of numbers divisible by 3 & 5 with "pingpong"
+* __input: 17__
+* __output:[1,2,ping,4,pong,ping,7,8,ping,pong,11,ping,13,14,pingpong,16,17]__
 
 ## Setup/Installation Requirements
 
@@ -16,7 +51,7 @@ _{This is a detailed description of your application. Its purpose and usage.  Gi
 * _easy-to-understand_
 * _format_
 
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
+_Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
 
 ## Known Bugs
 
