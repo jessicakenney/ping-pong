@@ -4,6 +4,9 @@ $(document).ready(function() {
 
   //---------BackEnd--------------
 
+  //var divisors = [3,5];
+  //var gameStrings = ["ping","pong"];
+
   function getGameNumbers(max) {
     var gameNumbers= [];
     for (var index = 1; index <= max; index++){
@@ -19,8 +22,22 @@ $(document).ready(function() {
       return 0;
     }
   };
+  //currently this is getting a single number
+  //maybe an array later
+  function getPing(number) {
+    var numberString = [];
+    if ( isDivisible(number,3) ) {
+      numberString = number.toString();
+      var newString = numberString.replace(/\d+/,"ping");
+      alert(newString);
+      return newString;
+    } else {
+      alert("not divisble by 3");
+    }
+  };
 
   function getPingPong(inputNum) {
+    getPing(inputNum);
     return isDivisible(inputNum,3);
     // return getGameNumbers(inputNum);
   };
