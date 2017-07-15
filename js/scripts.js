@@ -54,10 +54,10 @@ $(document).ready(function() {
 
   //---------FrontEnd--------------
 
-  //number input
+  //get max number Input
   var inputNumber = parseInt($("#maxNum").val());
 
-  // get optional values
+  // get optional Input values
   var optionalDivisors = [];
   var defaultMode = 1;
   $("form input:text").each(function(){
@@ -65,24 +65,27 @@ $(document).ready(function() {
   });
 
   optionalDivisors.sort();
-  if ( /^\d$/.test(optionalDivisors[0]) && /^\d$/.test(optionalDivisors[1]) ){
+  if ( /^[1-9]$/.test(optionalDivisors[0]) && /^[1-9]$/.test(optionalDivisors[1]) ){
     modeString = "optionalDivisors";
     defaultMode = 0;
   } else {
     modeString = "default";
   };
-
+  //send to backend
   var results = goPlay(inputNumber,defaultMode,optionalDivisors[0],optionalDivisors[1]);
 
+  //clear prev results
+  $(".results li").remove();
+  $("p.opt").remove();
 
   // display results
   $(".results").show();
   $(".results #mode").text(modeString);
-  $(".results h5").after("<p>"+optionalDivisors[0]+"=ping</p>");
-  $(".results h5").after("<p>"+optionalDivisors[1]+"=pong</p>");
+  if (!defaultMode){
+    $(".results h5").append("<p class='opt'>" + optionalDivisors[0] + "=ping</p>");
+    $(".results h5").append("<p class='opt'>" + optionalDivisors[1] + "=pong</p>");
+  };
 
-  $(".results li").remove();
-  $(".results p").remove();
   results.forEach(function(result) {
     if (/^p/.test(result) ){
       $(".results ul").append("<li class='ping'>" + result + "</li>");
